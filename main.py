@@ -1,13 +1,24 @@
 import sys
-from curses import wrapper
+from pynput.keyboard import Key, Listener
 from src import dice_roll, mad_libs_gen, rnd_password_gen, rock_paper_scissors
 
 
-def main(stdcr):
+def check_key(key):
+    match key:
+        case Key.5:
+            exit
+    # keyboard.add_hotkey("1", dice_roll.main)
+    # keyboard.add_hotkey("2", mad_libs_gen.main)
+    # keyboard.add_hotkey("3", rnd_password_gen.main)
+    # keyboard.add_hotkey("4", rock_paper_scissors.main)
+    # keyboard.add_hotkey("5", exit)
+
+
+def main():
     while True:
-        stdcr.clear()
-        stdcr.addstr("Python Projects\n")
-        stdcr.addstr(
+        print("\033[H\033[J", end="")
+        print("Python Projects")
+        print(
             """
 0. Exit
 1. Dice Roll
@@ -16,19 +27,9 @@ def main(stdcr):
 4. Rock Paper Scissors
 """
         )
-        stdcr.refresh()
-        match stdcr.getkey():
-            case "0":
-                break
-            case "1":
-                dice_roll.main()
-            case "2":
-                mad_libs_gen.main()
-            case "3":
-                rnd_password_gen.main()
-            case "4":
-                rock_paper_scissors.main()
+        with Listener(on_press=check_key) as listener:
+            listener.join()
 
 
 if __name__ == "__main__":
-    sys.exit(wrapper(main))
+    sys.exit(main())
