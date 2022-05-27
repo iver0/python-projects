@@ -1,6 +1,3 @@
-import sys
-
-
 def clear():
     "Clears the screen."
     print("\033[H\033[J", end="")
