@@ -1,14 +1,17 @@
+from src import menu
 import random
 
 
-def main():
-    while True:
-        print("\033[H\033[J", end="")
-        print("1. Roll the Dice\n2. Exit\n")
-        s = input("Your selection: ")
-        print()
+def roll():
+    print(f"Rolled {random.randint(1, 6)}")
+    input()
 
-        if s == "1":
-            print(f"Rolled {random.randint(1, 6)}")
-        elif s == "2":
-            break
+
+def main():
+    menu_items = (("Roll the Dice", roll),)
+    while True:
+        menu.clear()
+        print("Dice Roll")
+
+        if menu.create(menu_items):
+            return

@@ -1,31 +1,29 @@
 import sys
-from src import dice_roll, mad_libs_gen, rnd_password_gen, rock_paper_scissors
+from src import (
+    menu,
+    dice_roll,
+    mad_libs_gen,
+    rnd_password_gen,
+    rock_paper_scissors,
+)
+from src.todo_app import main as todo_app
 
 
 def main():
+    menu_items = (
+        ("Dice Roll", dice_roll.main),
+        ("Mad Libs Generator", mad_libs_gen.main),
+        ("Random Password Generator", rnd_password_gen.main),
+        ("Rock Paper Scissors", rock_paper_scissors.main),
+        ("Todo App", todo_app.main),
+    )
+
     while True:
-        print("\033[H\033[J", end="")
-        print("Python Projects")
-        print(
-            """
-1. Dice Roll
-2. Mad Libs Generator
-3. Random Password Generator
-4. Rock Paper Scissors
-5. Exit
-"""
-        )
-        match input("Your selection: "):
-            case "1":
-                dice_roll.main()
-            case "2":
-                mad_libs_gen.main()
-            case "3":
-                rnd_password_gen.main()
-            case "4":
-                rock_paper_scissors.main()
-            case "5":
-                break
+        menu.clear()
+        print("Python Projects\n")
+
+        if menu.create(menu_items):
+            return
 
 
 if __name__ == "__main__":
