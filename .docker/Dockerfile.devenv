@@ -1,3 +1,8 @@
 FROM python
 
-RUN pip3 install --user -r requirements.txt
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
