@@ -1,11 +1,14 @@
 import random
 
 
-def roll():
-    return f"Rolled {random.randint(1, 6)}"
-
-
 def main():
-    print("1. Roll the Dice\n2. Exit")
-    # keyboard.add_hotkey("1", print, args=[roll])
-    # keyboard.add_hotkey("2", exit)
+    while True:
+        print("\033[H\033[J", end="")
+        print("1. Roll the Dice\n2. Exit\n")
+        s = input("Your selection: ")
+        print()
+
+        if s == "1":
+            print(f"Rolled {random.randint(1, 6)}")
+        elif s == "2":
+            break

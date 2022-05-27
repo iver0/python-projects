@@ -5,7 +5,7 @@
 		"context": "..",
 		"args": {
 			// Python version
-			"VARIANT": "3.10",
+			"VARIANT": "3.10-bullseye",
 			// Options
 			"NODE_VERSION": "lts/*"
 		}
@@ -21,7 +21,8 @@
 		"python.formatting.blackArgs": [
 			"--line-length",
 			"79"
-		]
+		],
+		"python.languageServer": "Pylance"
 	},
 	// VS Code extensions
 	"extensions": [
